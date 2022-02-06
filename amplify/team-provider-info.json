@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-taoteching-dev-201254-authRole",
+      "UnauthRoleArn": "arn:aws:iam::975078614951:role/amplify-taoteching-dev-201254-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::975078614951:role/amplify-taoteching-dev-201254-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-taoteching-dev-201254-deployment",
+      "UnauthRoleName": "amplify-taoteching-dev-201254-unauthRole",
+      "StackName": "amplify-taoteching-dev-201254",
+      "StackId": "arn:aws:cloudformation:us-east-1:975078614951:stack/amplify-taoteching-dev-201254/53ecead0-87a2-11ec-904c-12a22ae35421",
+      "AmplifyAppId": "d6uppt4xgd0o5"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d6uppt4xgd0o5",
+          "type": "manual"
+        }
+      }
+    }
+  }
+}
