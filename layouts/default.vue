@@ -27,6 +27,8 @@
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title v-text="title" />
+      <v-spacer />
+      <v-google-translate :languages="languages" default-language-code="en" />
     </v-app-bar>
     <v-main>
       <v-container>
@@ -40,10 +42,17 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import vGoogleTranslate from 'v-google-translate'
+import languages from 'assets/languages'
+
+Vue.use(vGoogleTranslate)
+
 export default {
   name: 'DefaultLayout',
   data() {
     return {
+      languages,
       clipped: false,
       drawer: false,
       fixed: false,

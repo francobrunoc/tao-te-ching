@@ -45,6 +45,15 @@ export default {
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
+    icon: {
+      fileName: 'icon.png',
+    },
+    meta: {
+      name: 'Tao Te Ching',
+      description: 'The book of the way',
+      mobileAppIOS: true,
+      favicon: true,
+    },
     manifest: {
       lang: 'en',
     },

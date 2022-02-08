@@ -1,30 +1,24 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="5" sm="8" md="6">
-<!--      <v-card class="logo py-4 d-flex justify-center">-->
-<!--        <NuxtLogo />-->
-<!--        <VuetifyLogo />-->
-<!--      </v-card>-->
-      <v-card>
-        <v-card-title class="justify-center amber--text red">
-          Press to get a chapter!
-        </v-card-title>
-        <v-card-text v-if="chapter.lines" align="center">
-          <h2 class="my-5">Chapter {{ chapter.number }}</h2>
-          <p v-for="line in chapter.lines" :key="line">
-            {{ line }}
-          </p>
-        </v-card-text>
-        <v-card-actions>
-          <v-row class="mt-1">
-            <v-col align="center">
-              <img src="~assets/Yin_yang.svg" width="20%" style="cursor: pointer" @click="sort">
-            </v-col>
-          </v-row>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+  <v-container>
+    <v-card>
+      <v-card-title class="justify-center amber--text red">
+        Press to get a chapter!
+      </v-card-title>
+      <v-card-text v-if="chapter.lines" align="center">
+        <h1 class="my-10">Chapter {{ chapter.number }}</h1>
+        <p v-for="line in chapter.lines" :key="line" style="font-size: 18px">
+          {{ line }}
+        </p>
+      </v-card-text>
+      <v-card-actions>
+        <v-row class="mt-1">
+          <v-col align="center">
+            <img src="~assets/Yin_yang.svg" width="20%" style="cursor: pointer" @click="sort">
+          </v-col>
+        </v-row>
+      </v-card-actions>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
