@@ -35,6 +35,8 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    // https://go.nuxtjs.dev/pwa
+    '@nuxtjs/pwa',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -47,6 +49,7 @@ export default {
   pwa: {
     icon: {
       fileName: 'icon.png',
+      source: 'static/icon.png'
     },
     meta: {
       name: 'Tao Te Ching',
