@@ -13,10 +13,14 @@
       <v-card-actions>
         <v-row class="mt-1">
           <v-col align="center">
-            <img src="~assets/Yin_yang.svg" width="20%" style="cursor: pointer" @click="sort">
+            <img src="~assets/Yin_yang.svg" width="20%" style="cursor: pointer" @click="sort(null)">
           </v-col>
         </v-row>
       </v-card-actions>
+      <v-card-subtitle class="amber--text red">
+        Or select by number:
+        <v-select :items="chapters" @change="sort" />
+      </v-card-subtitle>
     </v-card>
   </v-container>
 </template>
@@ -30,16 +34,16 @@ export default {
     return {
       chapter: {
         lines: null,
-        number: null
+        number: null,
       },
+        chapters: [...Array(82).keys()].splice(1, 82)
     }
   },
   methods: {
-    sort() {
-      const number = this.getRandomArbitrary()
+    sort(selection) {
+      const number = selection || this.getRandomArbitrary()
       this.chapter.lines = chapters[`ch${number}`]
       this.chapter.number = number
-      console.log(this.chapter)
     },
     getRandomArbitrary(min = 1, max = 81) {
       return Math.floor(Math.random() * (max - min) + min);
