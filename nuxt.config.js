@@ -49,7 +49,7 @@ export default {
   pwa: {
     icon: {
       fileName: 'icon.png',
-      source: 'static/icon.png'
+      source: 'static/icon.png',
     },
     meta: {
       name: 'Tao Te Ching',
