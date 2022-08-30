@@ -9,8 +9,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - tao-te-ching',
-    title: 'tao-te-ching',
+    titleTemplate: '%s',
+    title: 'Tao Te Ching',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -53,12 +53,14 @@ export default {
     },
     meta: {
       name: 'Tao Te Ching',
+      short_name: 'Tao The Ching',
       description: 'The book of the way',
       mobileAppIOS: true,
       favicon: true,
     },
     manifest: {
-      lang: 'en',
+      name: 'Tao Te Ching',
+      short_name: 'Tao Te Ching',
     },
   },
 
