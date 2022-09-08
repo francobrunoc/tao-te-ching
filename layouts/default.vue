@@ -24,7 +24,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
+    <v-app-bar :clipped-left="clipped" fixed app hide-on-scroll>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title v-text="title" />
       <v-spacer />
@@ -58,9 +58,14 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
+          icon: 'mdi-book-open-variant',
+          title: 'Chapters',
           to: '/',
+        },
+        {
+          icon: 'mdi-information-outline',
+          title: 'About',
+          to: '/about',
         },
       ],
       miniVariant: false,

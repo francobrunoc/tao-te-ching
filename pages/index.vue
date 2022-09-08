@@ -1,14 +1,14 @@
 <template>
   <v-container>
     <v-card>
-      <v-card-title class="justify-center amber--text red">
-        Press to get a chapter!
+      <v-card-title class="justify-center amber--text red" style="font-size: 2.5vh">
+        Press the ying yang to get a chapter!
       </v-card-title>
       <v-card-text v-if="chapter.lines" align="center">
-        <h1 class="my-10">Chapter {{ chapter.number }}</h1>
-        <p v-for="line in chapter.lines" :key="line" style="font-size: 18px">
+        <h1 class="my-10 notranslate">{{ chapter.number }}</h1>
+        <div v-for="line in chapter.lines" :key="line" style="font-size: 2.5vh; line-height: 3vh">
           {{ line }}
-        </p>
+        </div>
       </v-card-text>
       <v-card-actions>
         <v-row class="mt-1">
@@ -16,21 +16,21 @@
             <img
               class="image"
               src="~assets/Yin_yang.svg"
-              width="20%"
+              width="15%"
               style="cursor: pointer"
-              @click="sort(null)"
+              @click="random"
             />
           </v-col>
         </v-row>
       </v-card-actions>
       <v-card-subtitle>
-        Find a word in:
+        Find a chapter containing a word (only in english words for a while...):
         <v-text-field v-model="query"></v-text-field>
         <v-btn @click="find()">Chapter</v-btn>
       </v-card-subtitle>
       <v-card-subtitle class="amber--text red">
         Or select by number:
-        <v-select :items="chapters" @change="sort" />
+        <v-select :items="chapters" @change="selection" />
       </v-card-subtitle>
     </v-card>
   </v-container>
@@ -52,10 +52,14 @@ export default {
     }
   },
   methods: {
-    sort(selection) {
-      const number = selection || this.getRandomArbitrary()
+    random() {
+      const number = this.getRandomArbitrary()
       this.chapter.lines = chapters[`ch${number}`]
       this.chapter.number = number
+    },
+    selection(chapter) {
+      this.chapter.lines = chapters[`ch${chapter}`]
+      this.chapter.number = chapter
     },
     getRandomArbitrary(min = 1, max = 81) {
       return Math.floor(Math.random() * (max - min) + min)
