@@ -24,7 +24,7 @@
         </v-row>
       </v-card-actions>
       <v-card-subtitle>
-        Find a chapter containing a word (only in english words for a while...):
+        Find a chapter containing a word (only english words for a while...):
         <v-text-field v-model="query"></v-text-field>
         <v-btn @click="find()">Chapter</v-btn>
       </v-card-subtitle>
