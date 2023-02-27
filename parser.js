@@ -8,7 +8,6 @@ const output = {}
 let last
 let text
 let ch
-
 ;(async () => {
   const pdf = await reader(PDF_PATH)
   // console.log(pdf.pages.find(({pageId}) => pageId === 0).texts)
@@ -21,8 +20,8 @@ let ch
           output[`ch${text}`] = []
           last = text
         } else if (output.ch1 && line.text !== ' ') {
-            output[`ch${last}`].push(line.text)
-          }
+          output[`ch${last}`].push(line.text)
+        }
       })
   }
   console.log(output)
@@ -38,7 +37,7 @@ function isChapter(text) {
   return false
 }
 
-async function writeFile(json) {
+function writeFile(json) {
   fs.writeFile(`${__dirname}/assets/chapters.json`, json, 'utf8', (err) => {
     if (err)
       console.log(

@@ -1,37 +1,46 @@
 <template>
   <v-container>
     <v-card>
-      <v-card-title class="justify-center amber--text red" style="font-size: 2.5vh">
-        Press the ying yang to get a chapter!
-      </v-card-title>
-      <v-card-text v-if="chapter.lines" align="center">
-        <h1 class="my-10 notranslate">{{ chapter.number }}</h1>
-        <div v-for="line in chapter.lines" :key="line" style="font-size: 2.5vh; line-height: 3vh">
-          {{ line }}
-        </div>
-      </v-card-text>
-      <v-card-actions>
-        <v-row class="mt-1">
-          <v-col align="center">
-            <img
+      <v-card-text align="center">
+        <v-avatar>
+          <img
               class="image"
               src="~assets/Yin_yang.svg"
-              width="15%"
               style="cursor: pointer"
               @click="random"
-            />
-          </v-col>
-        </v-row>
-      </v-card-actions>
-      <v-card-subtitle>
-        Find a chapter containing a word (only english words for a while...):
-        <v-text-field v-model="query"></v-text-field>
-        <v-btn @click="find()">Chapter</v-btn>
-      </v-card-subtitle>
-      <v-card-subtitle class="amber--text red">
-        Or select by number:
+          />
+        </v-avatar>
+      </v-card-text>
+      <div v-if="chapter.number">
+        <v-card-text align="center">
+          <h1 class="my-5 notranslate">{{ chapter.number }}</h1>
+        </v-card-text>
+        <v-card-text v-if="chapter.lines" align="center">
+          <div v-for="line in chapter.lines" :key="line" style="line-height: 3vh">
+            {{ line }}
+          </div>
+        </v-card-text>
+      </div>
+    </v-card>
+    <div class="my-5" />
+    <v-card>
+      <v-card-text>
+        Find a chapter containing a word
+        <v-tooltip top>
+          <template v-slot:activator="{ on }">
+            <v-icon v-on="on">mdi-information-outline</v-icon>
+          </template>
+          <span>Only english words for now</span>
+        </v-tooltip>
+        <v-text-field v-model="query" append-icon="mdi-magnify" @click:append="find()"></v-text-field>
+      </v-card-text>
+    </v-card>
+    <div class="my-5"/>
+    <v-card>
+      <v-card-text>
+        Or select by number
         <v-select :items="chapters" @change="selection" />
-      </v-card-subtitle>
+      </v-card-text>
     </v-card>
   </v-container>
 </template>
@@ -43,7 +52,8 @@ export default {
   name: 'IndexPage',
   data() {
     return {
-      query: '',
+      query: null,
+      alt_over: false,
       chapter: {
         lines: null,
         number: null,
@@ -65,6 +75,7 @@ export default {
       return Math.floor(Math.random() * (max - min) + min)
     },
     find() {
+      if (!this.query) return
       Object.keys(chapters).forEach((chapter, index) => {
         if (chapters[chapter].find((line) => line.includes(this.query))) {
           this.chapter.lines = chapters[chapter]
@@ -80,6 +91,9 @@ export default {
   -webkit-animation: spin 5s linear infinite;
   -moz-animation: spin 5s linear infinite;
   animation: spin 5s linear infinite;
+}
+.v-card__text {
+  font-size: 2vh;
 }
 @-moz-keyframes spin {
   100% {
